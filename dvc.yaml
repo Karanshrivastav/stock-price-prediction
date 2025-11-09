@@ -1,6 +1,6 @@
 stages:
   preprocess:
-    cmd: python src/preprocess.py --data_dir data_versions/{data_version} --out_dir data/processed
+    cmd: PYTHONPATH=. python src/preprocess.py --data_dir data_versions/${data_version} --out_dir data/processed
     deps:
       - src/preprocess.py
       - data_versions

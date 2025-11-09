@@ -13,7 +13,8 @@ def parse_args():
 
 def ensure_minute_index(df):
     # Expect timestamp column as string convertible to datetime
-    df['timestamp'] = pd.to_datetime(df['timestamp'])
+    df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
+    df = df.dropna(subset=['timestamp'])
     df = df.sort_values(['source_file','timestamp']).reset_index(drop=True)
     out_frames = []
     for fname, g in df.groupby('source_file'):
