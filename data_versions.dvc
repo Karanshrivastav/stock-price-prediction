@@ -1,0 +1,6 @@
+outs:
+- md5: 5114d9a343faf57b8a8df376e962be3d.dir
+  size: 57858246
+  nfiles: 5
+  hash: md5
+  path: data_versions

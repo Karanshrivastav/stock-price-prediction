@@ -6,3 +6,4 @@ mlflow/
 .dvc/cache/
 __pycache__/
 .venv/
+/data_versions
