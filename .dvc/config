@@ -1,0 +1,4 @@
+[core]
+    remote = gcsremote
+['remote "gcsremote"']
+    url = gs://rare-hub-473405-c2-stock-dvc/dvcstore

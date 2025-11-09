@@ -1,0 +1,44 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py --data_dir data_versions/{data_version} --out_dir data/processed
+    deps:
+      - src/preprocess.py
+      - data_versions
+      - params.yaml
+    params:
+      - data_version
+    outs:
+      - data/processed
+
+  featurize:
+    cmd: python src/featurize.py --in_dir data/processed --out_dir data/features
+    deps:
+      - src/featurize.py
+      - data/processed
+      - params.yaml
+    params:
+      - rolling_window
+      - target_horizon
+    outs:
+      - data/features
+
+  train:
+    cmd: python src/train.py --features_dir data/features --model_dir models --experiment_name stock_pred
+    deps:
+      - src/train.py
+      - data/features
+      - params.yaml
+    params:
+      - model
+      - random_seed
+    outs:
+      - models
+
+  evaluate:
+    cmd: python src/evaluate.py --features_dir data/features --model_dir models --out predictions/preds.csv
+    deps:
+      - src/evaluate.py
+      - models
+      - data/features
+    outs:
+      - predictions/preds.csv

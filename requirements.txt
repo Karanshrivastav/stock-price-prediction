@@ -1,0 +1,11 @@
+dvc[all]
+feast
+mlflow
+scikit-learn
+pandas
+numpy
+xgboost
+joblib
+pytest
+cml
+matplotlib
